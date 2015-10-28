@@ -24,14 +24,14 @@ _EOF_
 # ___________________________________FOR DEBIAN 7 (dont forget to comment debian 8)____________________________________#
 
 # cat << _EOF_ > /etc/apt/sources.list
-# deb http://httpredir.debian.org/debian wheezy main
-# deb-src http://httpredir.debian.org/debian wheezy main
+#deb http://ftp.debian.org/debian stable main contrib non-free
+#eb-src http://ftp.debian.org/debian stable main contrib non-free
 
-# deb http://httpredir.debian.org/debian wheezy-updates main
-# deb-src http://httpredir.debian.org/debian wheezy-updates main
+#deb http://ftp.debian.org/debian/ wheezy-updates main contrib non-free
+#deb-src http://ftp.debian.org/debian/ wheezy-updates main contrib non-free
 
-# deb http://security.debian.org/ wheezy/updates main
-# deb-src http://security.debian.org/ wheezy/updates main
+#deb http://security.debian.org/ wheezy/updates main contrib non-free
+#deb-src http://security.debian.org/ wheezy/updates main contrib non-free
 # #backport
 # deb http://ftp.debian.org/debian wheezy-backports main contrib non-free
 # _EOF_
@@ -176,7 +176,7 @@ predictable-ips = true
 
 default-domain = example.com
 
-ipv4-network = 192.168.1.0
+ipv4-network = 10.10.10.0
 ipv4-netmask = 255.255.255.0
 
 dns = 8.8.8.8
@@ -200,7 +200,7 @@ _EOF_
 echo "***************** conf file maked *************************"
 
 
-sysctl -w net.ipv4.ip_forward=1 && sysctl -p && iptables -I FORWARD -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu && iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o eth0 -j MASQUERADE && iptables -A FORWARD -s 10.0.0.0/24 -j ACCEPT && iptables -I INPUT -p tcp --dport 443 -j ACCEPT && iptables -I INPUT -p udp --dport 443 -j ACCEPT
+sysctl -w net.ipv4.ip_forward=1 && sysctl -p && iptables -I FORWARD -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu && iptables -t nat -A POSTROUTING -s 10.10.10.0/24 -o eth0 -j MASQUERADE && iptables -A FORWARD -s 10.10.10.0/24 -j ACCEPT && iptables -I INPUT -p tcp --dport 443 -j ACCEPT && iptables -I INPUT -p udp --dport 443 -j ACCEPT
 
 echo "	now create login user as blew :"
 echo "	(ocpasswd -c /etc/ocserv/ocpasswd <YOURDESIREDUSERNAME>)"

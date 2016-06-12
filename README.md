@@ -1,14 +1,13 @@
-# ocserv-script
+# ocserv-script v2
 
 make Debian server to ssl vpn server
 
 just run as blow :
 
 
-bash ocsetup.sh
+bash ocsetup.sh help
 
 or
 
-./ocsetup.sh
+./ocsetup.sh help
 
-but before that read the code and change the code...

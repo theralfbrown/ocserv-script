@@ -156,7 +156,7 @@ echo "##############################_______OC SERVE V2 ________#################
 
 function help_(){
 echo "USAGE :"
-echo "ocsetup.sh {(-i)nstall|start|stop|(-s)tatus|(-h)elp}"
+echo "ocsetup.sh {(-i)nstall|(-u)ser|start|stop|(-s)tatus|(-h)elp}"
 }
 
 function start(){
@@ -203,7 +203,6 @@ get_oc_install
 certificate
 clear
 conf_creation
-user_add
 clear
 title
 echo "OCServ install Successfully"
@@ -212,17 +211,23 @@ stop)
 clear
 title
 stop
+echo "OCserv NOW STOPED"
     ;;
 start)
-start
 clear
 title
+start
 echo "OCserv NOW STARTED"
     ;;
 status | -s)
 clear
 title
 status
+    ;;
+user | -u)
+clear
+title
+user_add
     ;;
 help | -h)
 clear

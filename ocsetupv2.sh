@@ -42,16 +42,17 @@ _EOF_
 function get_essential(){
 apt-get update
 apt-get install build-essential
-apt-get install libgnutls28-dev libwrap0-dev libpam0g-dev libseccomp-dev libnl-route-3-dev libev4 libev-dev
+apt-get install libgnutls28-dev libwrap0-dev libpam0g-dev libseccomp-dev libnl-route-3-dev libev4 libev-dev openssl autogen
 apt-get install libgmp3-dev m4 gcc pkg-config make gnutls-bin libreadline-dev curl libprotobuf-c0-dev protobuf-c-compiler
+apt-get install gperf libdbus-1-dev libopts25-dev libnl-nf-3-dev libpcl1-dev libtalloc-dev liboath-dev
 }
 
 # Get OCServ
 function get_oc_install(){
-oc_version_latest=$(curl -s "http://www.infradead.org/ocserv/download.html" | sed -n 's/^.*version is <b>\(.*$\)/\1/p')
-wget ftp://ftp.infradead.org/pub/ocserv/ocserv-"$oc_version_latest".tar.xz
-tar xvf ocserv-"$oc_version_latest".tar.xz
-cd ocserv-"$oc_version_latest"
+#oc_version_latest=$(curl -s "http://www.infradead.org/ocserv/download.html" | sed -n 's/^.*version is <b>\(.*$\)/\1/p')
+wget ftp://ftp.infradead.org/pub/ocserv/ocserv-0.10.8.tar.xz
+tar xvf ocserv-0.10.8.tar.xz
+cd ocserv-0.10.8
 ./configure
 make
 make install
